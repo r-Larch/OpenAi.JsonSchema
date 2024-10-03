@@ -10,6 +10,8 @@
 - Supports a wide range of types, including primitives such as `bool`, `int`, `double`, and `DateTime`.
 - Automatically manages `$defs` and `$ref` in the schema (e.g., `"$ref": "#/$defs/MyType"`).
 - Ensures compatibility with OpenAI's JSON Schema format for structured outputs.
+- **Polymorphism support** using `JsonPolymorphicAttribute` and `JsonDerivedTypeAttribute` to generate schemas for polymorphic types.
+- Supports `JsonIgnoreAttribute` and all other `System.Text.Json` attributes for flexible schema customization.
 
 ## Installation
 
