@@ -36,7 +36,7 @@ var jsonOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web) {
 var options = new JsonSchemaOptions(SchemaDefaults.OpenAi, jsonOptions);
 
 var resolver = new DefaultSchemaGenerator();
-var schema = resolver.Generate(type, options);
+var schema = resolver.Generate<Document>(options);
 
 var json = schema.ToJsonNode().ToJsonString(new JsonSerializerOptions() { WriteIndented = true });
 output.WriteLine(json);
