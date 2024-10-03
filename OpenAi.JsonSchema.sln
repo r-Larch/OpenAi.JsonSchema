@@ -3,9 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAi.JsonSchema", "OpenAi.JsonSchema\OpenAi.JsonSchema.csproj", "{76403479-81AD-4F31-A185-3362225C9AEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenAi.JsonSchema", "OpenAi.JsonSchema\OpenAi.JsonSchema.csproj", "{76403479-81AD-4F31-A185-3362225C9AEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAi.JsonSchema.Tests", "OpenAi.JsonSchema.Tests\OpenAi.JsonSchema.Tests.csproj", "{65837C3A-4F5C-4853-927C-43795EF573B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenAi.JsonSchema.Tests", "OpenAi.JsonSchema.Tests\OpenAi.JsonSchema.Tests.csproj", "{65837C3A-4F5C-4853-927C-43795EF573B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7E927722-DDA6-4899-AA25-D30CC3EC3218}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\ci.yml = .github\workflows\ci.yml
+		.github\workflows\release-preview.yml = .github\workflows\release-preview.yml
+		.github\workflows\release.yml = .github\workflows\release.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
