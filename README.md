@@ -5,10 +5,11 @@
 **OpenAi-JsonSchema** is a lightweight library for generating valid JSON Schema for OpenAI's Structured Outputs feature, ensuring compatibility with OpenAI's JSON Schema subset. It simplifies the creation of structured outputs for OpenAI models, following the schema generation guidelines provided by OpenAI.
 
 ## Features
-- Supports `System.ComponentModel.DescriptionAttribute` for descriptions.
-- Handles nullable reference types.
-- Supports a wide range of types, including primitives (e.g., `bool`, `int`, `double`, `DateTime`).
-- Ensures compatibility with OpenAI's JSON Schema format.
+- Supports `System.ComponentModel.DescriptionAttribute` for generating descriptions in the JSON Schema.
+- Handles `Nullable<T>` types (e.g., `int?`) and nullable reference types (e.g., `string?`).
+- Supports a wide range of types, including primitives such as `bool`, `int`, `double`, and `DateTime`.
+- Automatically manages `$defs` and `$ref` in the schema (e.g., `"$ref": "#/$defs/MyType"`).
+- Ensures compatibility with OpenAI's JSON Schema format for structured outputs.
 
 ## Installation
 
@@ -23,10 +24,17 @@ Install-Package LarchSys.OpenAi.JsonSchema
 The following example demonstrates how to generate a JSON Schema using the **LarchSys.OpenAi.JsonSchema** library.
 
 ```csharp
-var options = new JsonSchemaOptions(SchemaDefaults.OpenAi);
+// use Json Options to control PropertyName and Enum serialization:
+var jsonOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web) {
+    PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
+    Converters = { new JsonStringEnumConverter(JsonNamingPolicy.SnakeCaseLower) }
+};
+
+// use SchemaDefaults.OpenAi to enforce OpenAi rule set:
+var options = new JsonSchemaOptions(SchemaDefaults.OpenAi, jsonOptions);
 
 var resolver = new DefaultSchemaGenerator();
-var schema = resolver.Generate<Document>(options);
+var schema = resolver.Generate(type, options);
 
 var json = schema.ToJsonNode().ToJsonString(new JsonSerializerOptions() { WriteIndented = true });
 output.WriteLine(json);
@@ -55,45 +63,45 @@ public record Line(
   "type": "object",
   "description": "A document",
   "properties": {
-    "Id": {
+    "id": {
       "type": "integer",
       "description": "Id of the document"
     },
-    "Name": {
+    "name": {
       "type": "string",
       "description": "Document name"
     },
-    "Lines": {
+    "lines": {
       "type": "array",
       "description": "Text lines of the document",
       "items": {
         "type": "object",
         "description": "A line of text in a document",
         "properties": {
-          "Number": {
+          "number": {
             "type": "integer",
             "description": "Line number"
           },
-          "Text": {
+          "text": {
             "type": "string",
             "description": "Line text"
           }
         },
         "required": [
-          "Number",
-          "Text"
+          "number",
+          "text"
         ],
         "additionalProperties": false
       }
     },
-    "Next": {
+    "next": {
       "description": "Next document in order",
       "anyOf": [
         { "type": "null" },
         { "$ref": "#" }
       ]
     },
-    "Prev": {
+    "prev": {
       "description": "Prev document in order",
       "anyOf": [
         { "type": "null" },
@@ -102,14 +110,15 @@ public record Line(
     }
   },
   "required": [
-    "Id",
-    "Name",
-    "Lines",
-    "Next",
-    "Prev"
+    "id",
+    "name",
+    "lines",
+    "next",
+    "prev"
   ],
   "additionalProperties": false
 }
+
 ```
 
 ## How It Works
@@ -126,7 +135,7 @@ Contributions are welcome! Please fork this repository and submit a pull request
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.txt) file for more information.
 
 ## Contact
 
