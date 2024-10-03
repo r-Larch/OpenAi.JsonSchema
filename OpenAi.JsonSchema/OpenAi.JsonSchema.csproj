@@ -11,14 +11,14 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Nuget Pack">
-    <PackageId>OpenAi-JsonSchema</PackageId>
+    <PackageId>LarchSys.OpenAi.JsonSchema</PackageId>
     <Version>0.0.0</Version>
-    <Title>OpenAi-JsonSchema</Title>
+    <Title>OpenAi JsonSchema</Title>
     <Authors>René Larch</Authors>
     <Copyright>Copyright © LarchSys and Wedomagic 2024</Copyright>
     <PackageTags>OpenAI;JsonSchema;AI;StructuredOutputs;SchemaGeneration</PackageTags>
     <Description>
-      OpenAi-JsonSchema is a lightweight library for generating valid JSON Schema
+      OpenAi.JsonSchema is a lightweight library for generating valid JSON Schema
       for OpenAI models' Structured Outputs feature. It supports a wide range of types,
       ensures compatibility with OpenAI's JSON Schema format, and leverages C# descriptions
       and attributes for schema generation.

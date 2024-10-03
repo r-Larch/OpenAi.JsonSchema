@@ -1,6 +1,6 @@
-# OpenAi-JsonSchema
+# OpenAi JsonSchema
 
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/r-Larch/OpenAi.JsonSchema/ci.yml) ![NuGet Version](https://img.shields.io/nuget/v/OpenAi-JsonSchema)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/r-Larch/OpenAi.JsonSchema/ci.yml) ![NuGet Version](https://img.shields.io/nuget/v/LarchSys.OpenAi.JsonSchema)
 
 **OpenAi-JsonSchema** is a lightweight library for generating valid JSON Schema for OpenAI's Structured Outputs feature, ensuring compatibility with OpenAI's JSON Schema subset. It simplifies the creation of structured outputs for OpenAI models, following the schema generation guidelines provided by OpenAI.
 
@@ -12,15 +12,15 @@
 
 ## Installation
 
-Install via [NuGet](https://www.nuget.org/packages/OpenAi-JsonSchema):
+Install via [NuGet](https://www.nuget.org/packages/LarchSys.OpenAi.JsonSchema):
 
 ```bash
-Install-Package OpenAi-JsonSchema
+Install-Package LarchSys.OpenAi.JsonSchema
 ```
 
 ## Quick Start
 
-The following example demonstrates how to generate a JSON Schema using the **OpenAi-JsonSchema** library.
+The following example demonstrates how to generate a JSON Schema using the **LarchSys.OpenAi.JsonSchema** library.
 
 ```csharp
 var options = new JsonSchemaOptions(SchemaDefaults.OpenAi);
@@ -114,7 +114,7 @@ public record Line(
 
 ## How It Works
 
-OpenAi-JsonSchema simplifies the generation of JSON Schema for structured outputs using C# classes and attributes. It leverages the `System.ComponentModel.DescriptionAttribute` for field descriptions and supports nullable reference types, ensuring full compatibility with the JSON Schema language supported by OpenAI models.
+OpenAi JsonSchema simplifies the generation of JSON Schema for structured outputs using C# classes and attributes. It leverages the `System.ComponentModel.DescriptionAttribute` for field descriptions and supports nullable reference types, ensuring full compatibility with the JSON Schema language supported by OpenAI models.
 
 For more details on the OpenAI Structured Outputs feature, check out:
 - [Introducing Structured Outputs in the OpenAI API](https://openai.com/index/introducing-structured-outputs-in-the-api/)

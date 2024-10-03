@@ -28,5 +28,5 @@ jobs:
       run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
 
     - name: Push
-      run: dotnet nuget push OpenAi-JsonSchema.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key "${{ secrets.NUGET_APIKEY }}"
-      #run: dotnet nuget push OpenAi-JsonSchema.${VERSION}.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
+      run: dotnet nuget push LarchSys.OpenAi.JsonSchema.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key "${{ secrets.NUGET_APIKEY }}"
+      #run: dotnet nuget push LarchSys.OpenAi.JsonSchema.${VERSION}.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
