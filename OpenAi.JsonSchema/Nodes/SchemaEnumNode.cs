@@ -23,7 +23,7 @@ public record SchemaEnumNode(string Type, string[] Values, bool Nullable) : Sche
 
         var kind = jsonValues.Select(_ => JsonNode.Parse(_)!.GetValueKind()).FirstOrDefault();
         var type = kind switch {
-            JsonValueKind.String => "string",
+            JsonValueKind.String or JsonValueKind.Undefined => "string",
             JsonValueKind.Number => "integer",
             _ => throw new ArgumentOutOfRangeException(nameof(kind), kind, null)
         };
